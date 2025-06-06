@@ -24,6 +24,8 @@ class HTMLNode:
     def __repr__(self) -> str:
         return f"tag: {self.tag}, value: {self.value}, children: {self.children}, props: {self.props}"
 
+
+
 class LeafNode(HTMLNode):
     def __init__(self, tag, value, props=None):
         super().__init__(tag, value, props)
@@ -36,3 +38,19 @@ class LeafNode(HTMLNode):
             return self.value
 
         return f"<{self.tag}>{self.value}</{self.tag}>"
+
+
+#FIXME: this class doesn't work, self.children is returing none, should return [ child ] nodes in a html tree.
+class ParentNode(HTMLNode):
+    def __init__(self, tag, children, props=None):
+        super().__init__(tag, children, props)
+
+    
+    def to_html(self):
+        if not self.tag:
+            raise ValueError("All Parent Nodes must have a tag")
+
+        if self.children:
+            return f"children: {self.children}"
+
+        return self.children
