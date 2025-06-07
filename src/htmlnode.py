@@ -23,8 +23,7 @@ class HTMLNode:
 
     def __repr__(self) -> str:
         return f"HTMLNode: {self.tag}, {self.value}, children: {self.children}, props: {self.props}"
-
-
+    
 
 class LeafNode(HTMLNode):
     def __init__(self, tag, value, props=None):
